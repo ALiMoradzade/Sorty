@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|d:\\myfiles\\software engineering\\programming language\\c\\c#\\projects\\.net framework\\windows form application\\sorty\\sorty\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|solutionrelative:sorty\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|d:\\myfiles\\software engineering\\programming language\\c\\c#\\projects\\.net framework\\windows form application\\sorty\\sorty\\sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|solutionrelative:sorty\\sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|d:\\myfiles\\software engineering\\programming language\\c\\c#\\projects\\.net framework\\windows form application\\sorty\\sorty\\sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\sorty\\sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|solutionrelative:sorty\\sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\sorty\\sortform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|solutionrelative:sorty\\sortform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,24 +26,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Sort.cs",
+              "DocumentMoniker": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sorty\\Sort.cs",
+              "RelativeDocumentMoniker": "Sorty\\Sort.cs",
+              "ToolTip": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sorty\\Sort.cs",
+              "RelativeToolTip": "Sorty\\Sort.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T19:22:30.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SortForm.Designer.cs",
+              "DocumentMoniker": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sorty\\SortForm.Designer.cs",
+              "RelativeDocumentMoniker": "Sorty\\SortForm.Designer.cs",
+              "ToolTip": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sorty\\SortForm.Designer.cs",
+              "RelativeToolTip": "Sorty\\SortForm.Designer.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAvwFcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T19:20:35.918Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "SortForm.cs",
               "DocumentMoniker": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sorty\\SortForm.cs",
               "RelativeDocumentMoniker": "Sorty\\SortForm.cs",
               "ToolTip": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sorty\\SortForm.cs",
               "RelativeToolTip": "Sorty\\SortForm.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAIA0wCoAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAnwIAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T16:22:05.684Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "SortForm.cs [Design]",
               "DocumentMoniker": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sorty\\SortForm.cs",
               "RelativeDocumentMoniker": "Sorty\\SortForm.cs",
