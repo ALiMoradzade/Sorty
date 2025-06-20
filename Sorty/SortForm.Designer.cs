@@ -59,6 +59,7 @@ namespace Sorty
             this.buttonShuffle.TabIndex = 2;
             this.buttonShuffle.Text = "Shuffle";
             this.buttonShuffle.UseVisualStyleBackColor = true;
+            this.buttonShuffle.Click += new System.EventHandler(this.buttonShuffle_Click);
             // 
             // buttonArray
             // 
@@ -84,6 +85,8 @@ namespace Sorty
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sorty";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SortForm_FormClosing);
+            this.Load += new System.EventHandler(this.SortForm_Load);
             this.ResumeLayout(false);
 
         }
