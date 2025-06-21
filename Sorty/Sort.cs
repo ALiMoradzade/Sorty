@@ -13,9 +13,10 @@ namespace Sorty
         public int SwapCount { get; set; } = 0;
         public int SetCount { get; set; } = 0;
 
-        private void Swap(int a, int b)
+        private void Swap(ref int a, ref int b)
         {
             SwapCount++;
+            SetCount += 2;
             (a, b) = (b, a);
         }
 
@@ -28,7 +29,7 @@ namespace Sorty
                     CompareCount++;
                     if (array[j] > array[j+1])
                     {
-                        Swap(array[j], array[j + 1]);
+                        Swap(ref array[j], ref array[j + 1]);
                     }
                 }
             }
@@ -58,23 +59,25 @@ namespace Sorty
         {
             if (array.Length != 1)
             {
+                // Divide
                 int halfLength = array.Length / 2;
                 int remainingHalfLength = array.Length - halfLength;
 
                 int[] left = new int[halfLength];
                 Array.Copy(array, left, halfLength);
 
-                int[] rigth = new int[remainingHalfLength];
-                Array.Copy(array, halfLength, rigth, 0, remainingHalfLength);
+                int[] right = new int[remainingHalfLength];
+                Array.Copy(array, halfLength, right, 0, remainingHalfLength);
 
                 Merge(left);
-                Merge(rigth);
+                Merge(right);
 
-                int arrayIndex = 0, leftIndex = 0, rigthIndex = 0;
-                while (leftIndex < left.Length && rigthIndex < rigth.Length)
+                // Conquer + Merge
+                int arrayIndex = 0, leftIndex = 0, rightIndex = 0;
+                while (leftIndex < left.Length && rightIndex < right.Length)
                 {
                     CompareCount++;
-                    if (left[leftIndex] <= rigth[rigthIndex])
+                    if (left[leftIndex] <= right[rightIndex])
                     {
                         SetCount++;
                         array[arrayIndex] = left[leftIndex];
@@ -83,8 +86,8 @@ namespace Sorty
                     else
                     {
                         SetCount++;
-                        array[arrayIndex] = rigth[rigthIndex];
-                        rigthIndex++;
+                        array[arrayIndex] = right[rightIndex];
+                        rightIndex++;
                     }
                     arrayIndex++;
                 }
@@ -96,11 +99,11 @@ namespace Sorty
                         array[arrayIndex] = left[leftIndex];
                         leftIndex++;
                     }
-                    else if (rigthIndex < rigth.Length)
+                    else if (rightIndex < right.Length)
                     {
                         SetCount++;
-                        array[arrayIndex] = rigth[rigthIndex];
-                        rigthIndex++;
+                        array[arrayIndex] = right[rightIndex];
+                        rightIndex++;
                     }
                     arrayIndex++;
                 }
@@ -108,5 +111,37 @@ namespace Sorty
             }
             return array;
         }
+
+        public int[] Quick(int[] array, int start, int end)
+        {
+            int Partition(int[] arr, int low, int high)
+            {
+                int pivotIndex;
+                int pivot = arr[high];
+                for (int i = pivotIndex = low; i < high; i++)
+                {
+                    CompareCount++;
+                    if (arr[i] <= pivot)
+                    {
+                        SwapCount++;
+                        Swap(ref arr[i], ref arr[pivotIndex]);
+                        pivotIndex++;
+                    }
+                }
+                SwapCount++;
+                Swap(ref arr[pivotIndex], ref arr[high]);
+                return pivotIndex;
+            }
+
+            if (start < end)
+            {
+                int pivotIndex = Partition(array, start, end);
+                Quick(array, start, pivotIndex - 1);
+                Quick(array, pivotIndex + 1, end);
+            }
+            return array;
+        }
+
+
     }
 }

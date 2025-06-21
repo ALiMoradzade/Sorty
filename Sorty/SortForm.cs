@@ -133,7 +133,7 @@ namespace Sorty
         {
             Sort sort = new Sort();
             DateTime now = DateTime.Now;
-            array = sort.Merge(array);
+            array = sort.Quick(array, 0, array.Length - 1);
             DateTime then = DateTime.Now;
 
             TimeSpan duration = then - now;
