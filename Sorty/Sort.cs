@@ -15,7 +15,6 @@ namespace Sorty
 
         private void Swap(ref int a, ref int b)
         {
-            SwapCount++;
             SetCount += 2;
             (a, b) = (b, a);
         }
@@ -29,6 +28,7 @@ namespace Sorty
                     CompareCount++;
                     if (array[j] > array[j+1])
                     {
+                        SwapCount++;
                         Swap(ref array[j], ref array[j + 1]);
                     }
                 }
@@ -142,6 +142,23 @@ namespace Sorty
             return array;
         }
 
+        public int[] Selection(int[] array)
+        {
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                int minIndex = i;
+                for (int j = i + 1; j < array.Length; j++)
+                {
+                    if (array[j] < array[minIndex])
+                    {
+                        minIndex = j;
+                    }
+                }
+                SwapCount++;
+                Swap(ref array[i], ref array[minIndex]);
+            }
 
+            return array;
+        }
     }
 }
