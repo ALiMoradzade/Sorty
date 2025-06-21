@@ -9,6 +9,12 @@ namespace Sorty
     internal class Sort
     {
         public int CompareCount { get; set; } = 0;
+        public int SwapCount { get; set; } = 0;
+
+        private static void Swap(int a, int b)
+        {
+            (a, b) = (b, a);
+        }
 
         public int[] Bubble(int[] array)
         {
@@ -19,12 +25,30 @@ namespace Sorty
                     CompareCount++;
                     if (array[j] > array[j+1])
                     {
-                        (array[j], array[j + 1]) = (array[j + 1], array[j]);
+                        Swap(array[j], array[j + 1]);
+                        SwapCount++;
                     }
                 }
             }
             return array;
         }
-    }
 
+        public int[] InsertionSort(int[] array)
+        {
+            for (int i = 0; i < array.Length; ++i)
+            {
+                int temp = array[i];
+                int j = i;
+
+                while (j > 0 && temp < array[j - 1])
+                {
+                    array[j] = array[j - 1];
+                    j--;
+                }
+
+                array[j] = temp;
+            }
+            return array;
+        }
+    }
 }

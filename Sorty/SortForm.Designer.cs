@@ -46,6 +46,9 @@ namespace Sorty
             // comboBoxSort
             // 
             this.comboBoxSort.FormattingEnabled = true;
+            this.comboBoxSort.Items.AddRange(new object[] {
+            "Bubble Sort",
+            "Cycle Sort"});
             this.comboBoxSort.Location = new System.Drawing.Point(93, 14);
             this.comboBoxSort.Name = "comboBoxSort";
             this.comboBoxSort.Size = new System.Drawing.Size(121, 21);
