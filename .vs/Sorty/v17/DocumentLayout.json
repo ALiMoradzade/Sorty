@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|d:\\myfiles\\software engineering\\programming language\\c\\c#\\projects\\.net framework\\windows form application\\sorty\\sorty\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|solutionrelative:sorty\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sort Algo\\Cycle.cpp||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sort Algo\\Cycle.cpp||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\sorty\\sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|solutionrelative:sorty\\sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\sorty\\sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|solutionrelative:sorty\\sortform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|d:\\myfiles\\software engineering\\programming language\\c\\c#\\projects\\.net framework\\windows form application\\sorty\\sorty\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{29CA7FE6-FE8F-4920-A11E-7A0437CFFF66}|Sorty\\Sorty.csproj|solutionrelative:sorty\\sort.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,52 +26,41 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Cycle.cpp",
-              "DocumentMoniker": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sort Algo\\Cycle.cpp",
-              "RelativeDocumentMoniker": "Sort Algo\\Cycle.cpp",
-              "ToolTip": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sort Algo\\Cycle.cpp",
-              "RelativeToolTip": "Sort Algo\\Cycle.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-06-21T09:57:07.584Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Sort.cs",
               "DocumentMoniker": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sorty\\Sort.cs",
               "RelativeDocumentMoniker": "Sorty\\Sort.cs",
               "ToolTip": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sorty\\Sort.cs",
               "RelativeToolTip": "Sorty\\Sort.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAAADMAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAFUAAAAAAAAAAAD4v0oAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-20T19:22:30.568Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "SortForm.cs",
               "DocumentMoniker": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sorty\\SortForm.cs",
               "RelativeDocumentMoniker": "Sorty\\SortForm.cs",
               "ToolTip": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sorty\\SortForm.cs",
               "RelativeToolTip": "Sorty\\SortForm.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAIAwwIAAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAwwIcAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T16:22:05.684Z"
+              "WhenOpened": "2025-06-20T16:22:05.684Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "SortForm.cs [Design]",
               "DocumentMoniker": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sorty\\SortForm.cs",
               "RelativeDocumentMoniker": "Sorty\\SortForm.cs",
               "ToolTip": "D:\\MyFiles\\Software Engineering\\Programming Language\\C\\C#\\Projects\\.NET Framework\\Windows Form Application\\Sorty\\Sorty\\SortForm.cs [Design]",
               "RelativeToolTip": "Sorty\\SortForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T16:07:13.519Z"
+              "WhenOpened": "2025-06-20T16:07:13.519Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

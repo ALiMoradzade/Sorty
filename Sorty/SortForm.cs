@@ -64,13 +64,14 @@ namespace Sorty
             int half = array.Length / 2;
             int remainingHalf = array.Length - half;
 
-            int[] newArray = new int[half];
-            Array.Copy(array, newArray, half);
-            Stack<int> half1 = new Stack<int>(newArray.Reverse());
+            int[] halfArray = new int[half];
+            Array.Copy(array, halfArray, half);
 
-            newArray = new int[remainingHalf];
-            Array.Copy(array, half, newArray, 0, remainingHalf);
-            Stack<int> half2 = new Stack<int>(newArray.Reverse());
+            int[] rHalfArray = new int[remainingHalf];
+            Array.Copy(array, half, rHalfArray, 0, remainingHalf);
+
+            Stack<int> halfStack = new Stack<int>(halfArray.Reverse());
+            Stack<int> rHalfStack = new Stack<int>(rHalfArray.Reverse());
 
             List<int> l = new List<int>();
             for (int i = 0; i < array.Length; i++)
@@ -78,11 +79,11 @@ namespace Sorty
                 int n;
                 if (i % 2 == 0)
                 {
-                    n = half2.Pop();
+                    n = rHalfStack.Pop();
                 }
                 else
                 {
-                    n = half1.Pop();
+                    n = halfStack.Pop();
                 }
                 l.Add(n);
             }
@@ -126,6 +127,17 @@ namespace Sorty
         private void buttonShuffle_Click(object sender, EventArgs e)
         {
             ShuffleRandomize();
+        }
+
+        private void buttonSort_Click(object sender, EventArgs e)
+        {
+            Sort sort = new Sort();
+            DateTime now = DateTime.Now;
+            array = sort.Merge(array);
+            DateTime then = DateTime.Now;
+
+            TimeSpan duration = then - now;
+            label1.Text = duration.Milliseconds.ToString();
         }
     }
 }

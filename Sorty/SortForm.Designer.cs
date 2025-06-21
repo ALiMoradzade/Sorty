@@ -32,6 +32,7 @@ namespace Sorty
             this.comboBoxSort = new System.Windows.Forms.ComboBox();
             this.buttonShuffle = new System.Windows.Forms.Button();
             this.buttonArray = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonSort
@@ -42,13 +43,15 @@ namespace Sorty
             this.buttonSort.TabIndex = 0;
             this.buttonSort.Text = "Sort";
             this.buttonSort.UseVisualStyleBackColor = true;
+            this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
             // 
             // comboBoxSort
             // 
             this.comboBoxSort.FormattingEnabled = true;
             this.comboBoxSort.Items.AddRange(new object[] {
-            "Bubble Sort",
-            "Cycle Sort"});
+            "Bubble",
+            "Insertion",
+            "Merge"});
             this.comboBoxSort.Location = new System.Drawing.Point(93, 14);
             this.comboBoxSort.Name = "comboBoxSort";
             this.comboBoxSort.Size = new System.Drawing.Size(121, 21);
@@ -74,11 +77,21 @@ namespace Sorty
             this.buttonArray.UseVisualStyleBackColor = true;
             this.buttonArray.Click += new System.EventHandler(this.buttonArray_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(128, 61);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "label1";
+            // 
             // SortForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(224, 100);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonArray);
             this.Controls.Add(this.buttonShuffle);
             this.Controls.Add(this.comboBoxSort);
@@ -91,6 +104,7 @@ namespace Sorty
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SortForm_FormClosing);
             this.Load += new System.EventHandler(this.SortForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -100,6 +114,7 @@ namespace Sorty
         private System.Windows.Forms.ComboBox comboBoxSort;
         private System.Windows.Forms.Button buttonShuffle;
         private System.Windows.Forms.Button buttonArray;
+        private System.Windows.Forms.Label label1;
     }
 }
 
