@@ -43,12 +43,10 @@ namespace Sorty
             {
                 int temp = array[i];
                 int j = i;
-
-                while (j > 0 && temp < array[j - 1])
+                for (; j > 0 && temp < array[j - 1]; j--, CompareCount++)
                 {
                     SetCount++;
                     array[j] = array[j - 1];
-                    j--;
                 }
                 SetCount++;
                 array[j] = temp;
@@ -171,7 +169,7 @@ namespace Sorty
                 {
                     int temp = array[i];
                     int j;
-                    for (j = i; j >= gap && array[j - gap] > temp; j -= gap)
+                    for (j = i; j >= gap && array[j - gap] > temp; j -= gap, CompareCount++)
                     {
                         SetCount++;
                         array[j] = array[j - gap];
@@ -191,8 +189,16 @@ namespace Sorty
                 int left = 2 * rootIndex + 1;
                 int right = 2 * rootIndex + 2;
 
-                if (left < heapSize && arr[left] > arr[largest]) largest = left;
-                if (right < heapSize && arr[right] > arr[largest]) largest = right;
+                CompareCount++;
+                if (left < heapSize && arr[left] > arr[largest])
+                {
+                    largest = left;
+                }
+                CompareCount++;
+                if (right < heapSize && arr[right] > arr[largest])
+                {
+                    largest = right;
+                }
 
                 if (largest != rootIndex)
                 {
@@ -221,8 +227,15 @@ namespace Sorty
             int i = 0;
             while (i < array.Length)
             {
-                if (i == 0) i++;
-                if (array[i] >= array[i - 1]) i++;
+                if (i == 0)
+                {
+                    i++;
+                }
+                CompareCount++;
+                if (array[i] >= array[i - 1])
+                {
+                    i++;
+                }
                 else
                 {
                     SwapCount++;
