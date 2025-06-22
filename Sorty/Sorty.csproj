@@ -52,6 +52,7 @@
     <Compile Include="ArrayCountForm.Designer.cs">
       <DependentUpon>ArrayCountForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Shuffle.cs" />
     <Compile Include="Sort.cs" />
     <Compile Include="SortForm.cs">
       <SubType>Form</SubType>
