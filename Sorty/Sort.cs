@@ -196,6 +196,7 @@ namespace Sorty
 
                 if (largest != rootIndex)
                 {
+                    SwapCount++;
                     Swap(ref arr[rootIndex], ref arr[largest]);
                     Heapify(arr, heapSize, largest);
                 }
@@ -208,8 +209,26 @@ namespace Sorty
 
             for (int i = array.Length - 1; i >= 0; i--)
             {
+                SwapCount++;
                 Swap(ref array[0], ref array[i]);
                 Heapify(array, i, 0);
+            }
+            return array;
+        }
+
+        public int[] Gnome(int[] array)
+        {
+            int i = 0;
+            while (i < array.Length)
+            {
+                if (i == 0) i++;
+                if (array[i] >= array[i - 1]) i++;
+                else
+                {
+                    SwapCount++;
+                    Swap(ref array[i], ref array[i - 1]);
+                    i--;
+                }
             }
             return array;
         }
