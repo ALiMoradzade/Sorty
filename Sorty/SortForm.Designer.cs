@@ -33,11 +33,12 @@ namespace Sorty
             this.buttonShuffle = new System.Windows.Forms.Button();
             this.buttonArray = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonGenerateNumbers = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonSort
             // 
-            this.buttonSort.Location = new System.Drawing.Point(12, 12);
+            this.buttonSort.Location = new System.Drawing.Point(255, 19);
             this.buttonSort.Name = "buttonSort";
             this.buttonSort.Size = new System.Drawing.Size(75, 23);
             this.buttonSort.TabIndex = 0;
@@ -52,14 +53,14 @@ namespace Sorty
             "Bubble",
             "Insertion",
             "Merge"});
-            this.comboBoxSort.Location = new System.Drawing.Point(93, 14);
+            this.comboBoxSort.Location = new System.Drawing.Point(336, 21);
             this.comboBoxSort.Name = "comboBoxSort";
             this.comboBoxSort.Size = new System.Drawing.Size(121, 21);
             this.comboBoxSort.TabIndex = 1;
             // 
             // buttonShuffle
             // 
-            this.buttonShuffle.Location = new System.Drawing.Point(12, 41);
+            this.buttonShuffle.Location = new System.Drawing.Point(174, 19);
             this.buttonShuffle.Name = "buttonShuffle";
             this.buttonShuffle.Size = new System.Drawing.Size(75, 23);
             this.buttonShuffle.TabIndex = 2;
@@ -69,7 +70,7 @@ namespace Sorty
             // 
             // buttonArray
             // 
-            this.buttonArray.Location = new System.Drawing.Point(12, 70);
+            this.buttonArray.Location = new System.Drawing.Point(93, 19);
             this.buttonArray.Name = "buttonArray";
             this.buttonArray.Size = new System.Drawing.Size(75, 23);
             this.buttonArray.TabIndex = 5;
@@ -80,17 +81,28 @@ namespace Sorty
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(128, 61);
+            this.label1.Location = new System.Drawing.Point(463, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "label1";
             // 
+            // buttonGenerateNumbers
+            // 
+            this.buttonGenerateNumbers.Location = new System.Drawing.Point(12, 12);
+            this.buttonGenerateNumbers.Name = "buttonGenerateNumbers";
+            this.buttonGenerateNumbers.Size = new System.Drawing.Size(75, 37);
+            this.buttonGenerateNumbers.TabIndex = 7;
+            this.buttonGenerateNumbers.Text = "Generate Numbers";
+            this.buttonGenerateNumbers.UseVisualStyleBackColor = true;
+            this.buttonGenerateNumbers.Click += new System.EventHandler(this.buttonGenerateNumbers_Click);
+            // 
             // SortForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(224, 100);
+            this.ClientSize = new System.Drawing.Size(548, 68);
+            this.Controls.Add(this.buttonGenerateNumbers);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonArray);
             this.Controls.Add(this.buttonShuffle);
@@ -115,6 +127,7 @@ namespace Sorty
         private System.Windows.Forms.Button buttonShuffle;
         private System.Windows.Forms.Button buttonArray;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonGenerateNumbers;
     }
 }
 

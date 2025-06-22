@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace Sorty
 {
@@ -31,15 +32,16 @@ namespace Sorty
                     string s = File.ReadAllText(path);
                     var arrayString = s.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
                     array = Array.ConvertAll(arrayString, Convert.ToInt32);
-                    return;
                 }
                 catch (Exception)
                 {
                 }
             }
-
-            SetArray();
-            array = Shuffle.Chaos(array);
+            else
+            {
+                array = new int[1000];
+                buttonGenerateNumbers.PerformClick();
+            }
         }
 
         private void SortForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -49,18 +51,6 @@ namespace Sorty
         }
 
 
-        private void SetArray(int count = 100)
-        {
-            array = new int[count];
-            Random r = new Random();
-            for (int i = 0; i < count; i++)
-            {
-                array[i] = r.Next();
-            }
-        }
-
-        
-
         private void buttonArray_Click(object sender, EventArgs e)
         {
             using (ArrayCountForm f = new ArrayCountForm(array.Length))
@@ -68,7 +58,8 @@ namespace Sorty
                 f.ShowDialog();
                 if (f.isOkPressed)
                 {
-                    SetArray((int)f.numericUpDown1.Value);
+                    array = new int[(int)f.numericUpDown1.Value];
+                    buttonGenerateNumbers.PerformClick();
                 }
             }
         }
@@ -87,6 +78,15 @@ namespace Sorty
 
             TimeSpan duration = then - now;
             label1.Text = duration.Milliseconds.ToString();
+        }
+
+        private void buttonGenerateNumbers_Click(object sender, EventArgs e)
+        {
+            Random r = new Random();
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = r.Next();
+            }
         }
     }
 }
