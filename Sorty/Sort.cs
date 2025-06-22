@@ -149,6 +149,7 @@ namespace Sorty
                 int minIndex = i;
                 for (int j = i + 1; j < array.Length; j++)
                 {
+                    CompareCount++;
                     if (array[j] < array[minIndex])
                     {
                         minIndex = j;
@@ -158,6 +159,26 @@ namespace Sorty
                 Swap(ref array[i], ref array[minIndex]);
             }
 
+            return array;
+        }
+
+        public int[] Shell(int[] array)
+        {
+            for (int gap = array.Length / 2; gap > 0; gap /= 2)
+            {
+                for (int i = gap; i < array.Length; i++)
+                {
+                    int temp = array[i];
+                    int j;
+                    for (j = i; j >= gap && array[j - gap] > temp; j -= gap)
+                    {
+                        SetCount++;
+                        array[j] = array[j - gap];
+                    }
+                    SetCount++;
+                    array[j] = temp;
+                }
+            }
             return array;
         }
     }
