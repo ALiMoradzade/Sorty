@@ -47,21 +47,21 @@ namespace Sorty
             // numericUpDown1
             // 
             this.numericUpDown1.Increment = new decimal(new int[] {
-            50,
+            1000000,
             0,
             0,
             0});
-            this.numericUpDown1.Location = new System.Drawing.Point(86, 7);
+            this.numericUpDown1.Location = new System.Drawing.Point(84, 7);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            1000,
+            2621439,
             0,
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(58, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(84, 20);
             this.numericUpDown1.TabIndex = 5;
             this.numericUpDown1.Value = new decimal(new int[] {
-            100,
+            1000000,
             0,
             0,
             0});
@@ -90,7 +90,7 @@ namespace Sorty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(181, 69);
+            this.ClientSize = new System.Drawing.Size(180, 69);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.label1);
