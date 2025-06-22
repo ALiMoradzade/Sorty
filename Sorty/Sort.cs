@@ -389,6 +389,41 @@ namespace Sorty
             return array;
         }
 
+        public int[] OddEven(int[] array)
+        {
+            bool isSorted = false;
+
+            while (!isSorted)
+            {
+                isSorted = true;
+
+                // odd
+                for (int i = 1; i <= array.Length - 2; i += 2)
+                {
+                    CompareCount++;
+                    if (array[i] > array[i + 1])
+                    {
+                        SwapCount++;
+                        Swap(ref array[i], ref array[i + 1]);
+                        isSorted = false;
+                    }
+                }
+
+                // even
+                for (int i = 0; i <= array.Length - 2; i += 2)
+                {
+                    CompareCount++;
+                    if (array[i] > array[i + 1])
+                    {
+                        SwapCount++;
+                        Swap(ref array[i], ref array[i + 1]);
+                        isSorted = false;
+                    }
+                }
+            }
+            return array;
+        }
+
         private int[] Bogo(int[] array)
         {
             bool isArraySorted(int[] arr)
