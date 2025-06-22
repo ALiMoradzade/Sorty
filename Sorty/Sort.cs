@@ -43,6 +43,7 @@ namespace Sorty
             {
                 int temp = array[i];
                 int j = i;
+                // was while loop
                 for (; j > 0 && temp < array[j - 1]; j--, CompareCount++)
                 {
                     SetCount++;
@@ -241,6 +242,67 @@ namespace Sorty
                     SwapCount++;
                     Swap(ref array[i], ref array[i - 1]);
                     i--;
+                }
+            }
+            return array;
+        }
+
+        int[] Cycle(int[] array)
+        {
+            for (int cycleStart = 0; cycleStart < array.Length - 1; cycleStart++)
+            {
+                int temp = array[cycleStart];
+                int pos = cycleStart;
+
+                for (int i = cycleStart + 1; i < array.Length; i++)
+                {
+                    CompareCount++;
+                    if (array[i] < temp)
+                    {
+                        pos++;
+                    }
+                }
+
+                if (pos == cycleStart)
+                {
+                    continue;
+                }
+
+                // was while loop
+                for (; temp == array[pos]; pos++, CompareCount++)
+                {
+                }
+                    
+
+                if (pos != cycleStart)
+                {
+                    SwapCount++;
+                    Swap(ref temp, ref array[pos]);
+                }
+
+                while (pos != cycleStart)
+                {
+                    pos = cycleStart;
+                    for (int i = cycleStart + 1; i < array.Length; i++)
+                    {
+                        CompareCount++;
+                        if (array[i] < temp)
+                        {
+                            pos++;
+                        }
+                    }
+
+                    // was while loop
+                    for (; temp == array[pos]; pos++, CompareCount++)
+                    {
+                    }
+
+                    CompareCount++;
+                    if (temp != array[pos])
+                    {
+                        SwapCount++;
+                        Swap(ref temp, ref array[pos]);
+                    }
                 }
             }
             return array;
