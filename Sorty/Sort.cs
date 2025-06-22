@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing.Text;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -178,6 +179,37 @@ namespace Sorty
                     SetCount++;
                     array[j] = temp;
                 }
+            }
+            return array;
+        }
+
+        public int[] Heap(int[] array)
+        {
+            void Heapify(int[] arr, int heapSize, int rootIndex)
+            {
+                int largest = rootIndex;
+                int left = 2 * rootIndex + 1;
+                int right = 2 * rootIndex + 2;
+
+                if (left < heapSize && arr[left] > arr[largest]) largest = left;
+                if (right < heapSize && arr[right] > arr[largest]) largest = right;
+
+                if (largest != rootIndex)
+                {
+                    Swap(ref arr[rootIndex], ref arr[largest]);
+                    Heapify(arr, heapSize, largest);
+                }
+            }
+
+            for (int i = array.Length / 2; i >= 0; i--)
+            {
+                Heapify(array, array.Length, i);
+            }
+
+            for (int i = array.Length - 1; i >= 0; i--)
+            {
+                Swap(ref array[0], ref array[i]);
+                Heapify(array, i, 0);
             }
             return array;
         }
