@@ -50,9 +50,19 @@ namespace Sorty
             // 
             this.comboBoxSort.FormattingEnabled = true;
             this.comboBoxSort.Items.AddRange(new object[] {
-            "Bubble",
-            "Insertion",
-            "Merge"});
+            "Bead Sort",
+            "Bubble Sort",
+            "Cocktail Sort",
+            "Cycle Sort",
+            "Gnome Sort",
+            "Heap Sort",
+            "Insertion Sort",
+            "Merge Sort",
+            "Odd Even Sort",
+            "Quick Sort",
+            "Radix Sort",
+            "Selection Sort",
+            "Shell Sort"});
             this.comboBoxSort.Location = new System.Drawing.Point(336, 21);
             this.comboBoxSort.Name = "comboBoxSort";
             this.comboBoxSort.Size = new System.Drawing.Size(121, 21);

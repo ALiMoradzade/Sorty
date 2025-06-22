@@ -50,7 +50,6 @@ namespace Sorty
             File.WriteAllText(path, s);
         }
 
-
         private void buttonArray_Click(object sender, EventArgs e)
         {
             using (ArrayCountForm f = new ArrayCountForm(array.Length))
@@ -73,11 +72,52 @@ namespace Sorty
         {
             Sort sort = new Sort();
             DateTime now = DateTime.Now;
-            array = sort.Radix(array);
+            switch (comboBoxSort.Text)
+            {
+                case "Bead Sort":
+                    array = sort.Bead(array);
+                    break;
+                case "Bubble Sort":
+                    array = sort.Bubble(array);
+                    break;
+                case "Cocktail Sort":
+                    array = sort.Cocktail(array);
+                    break;
+                case "Cycle Sort":
+                    array = sort.Cycle(array);
+                    break;
+                case "Gnome Sort":
+                    array = sort.Gnome(array);
+                    break;
+                case "Heap Sort":
+                    array = sort.Heap(array);
+                    break;
+                case "Insertion Sort":
+                    array = sort.Insertion(array);
+                    break;
+                case "Merge Sort":
+                    array = sort.Merge(array);
+                    break;
+                case "Odd Even Sort":
+                    array = sort.OddEven(array);
+                    break;
+                case "Quick Sort":
+                    array = sort.Quick(array);
+                    break;
+                case "Radix Sort":
+                    array = sort.Radix(array);
+                    break;
+                case "Selection Sort":
+                    array = sort.Selection(array);
+                    break;
+                case "Shell Sort":
+                    array = sort.Shell(array);
+                    break;
+            }
             DateTime then = DateTime.Now;
 
             TimeSpan duration = then - now;
-            label1.Text = duration.Milliseconds.ToString();
+            label1.Text = $"{duration.TotalMilliseconds:N2}ms";
         }
 
         private void buttonGenerateNumbers_Click(object sender, EventArgs e)
