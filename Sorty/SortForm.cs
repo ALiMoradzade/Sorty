@@ -73,7 +73,7 @@ namespace Sorty
         {
             Sort sort = new Sort();
             DateTime now = DateTime.Now;
-            array = sort.Heap(array);
+            array = sort.Bead(array);
             DateTime then = DateTime.Now;
 
             TimeSpan duration = then - now;

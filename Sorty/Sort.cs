@@ -348,6 +348,47 @@ namespace Sorty
             return array;
         }
 
+        public int[] Bead(int[] array)
+        {
+            // find max value
+            int max = array.Max(x => x);
+           
+            int[,] grid = new int[array.Length, max];
+            int[] levelCount = new int[max];
+
+            // Step 1: "place" beads
+            for (int i = 0; i < max; i++)
+            {
+                levelCount[i] = 0;
+                for (int j = 0; j < array.Length; j++)
+                {
+                    grid[j, i] = 0; // Not Marked
+                }
+            }
+
+            // Step 2: Let beads "fall" by counting per column
+            for (int i = 0; i < array.Length; i++)
+            {
+                int num = array[i];
+                for (int j = 0; num > 0; j++, num--)
+                {
+                    grid[levelCount[j]++, j] = 1; // Marked
+                }
+            }
+
+            // Step 3: Read out sorted values
+            for (int i = 0; i < array.Length; i++)
+            {
+                int putt = 0;
+                for (int j = 0; j < max && grid[array.Length - 1 - i, j] == 1; j++)
+                {
+                    putt++;
+                }
+                array[i] = putt;
+            }
+            return array;
+        }
+
         private int[] Bogo(int[] array)
         {
             bool isArraySorted(int[] arr)
