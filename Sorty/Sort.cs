@@ -112,36 +112,41 @@ namespace Sorty
             return array;
         }
 
-        public int[] Quick(int[] array, int start, int end)
+        public int[] Quick(int[] array)
         {
-            int Partition(int[] arr, int low, int high)
+            return Sorting(array, 0, array.Length - 1);
+
+            int[] Sorting(int[] arr, int start, int end)
             {
-                int pivotIndex;
-                int pivot = arr[high];
-                for (int i = pivotIndex = low; i < high; i++)
+                int Partition(int[] a, int low, int high)
                 {
-                    CompareCount++;
-                    if (arr[i] <= pivot)
+                    int pivotIndex;
+                    int pivot = a[high];
+                    for (int i = pivotIndex = low; i < high; i++)
                     {
-                        SwapCount++;
-                        Swap(ref arr[i], ref arr[pivotIndex]);
-                        pivotIndex++;
+                        CompareCount++;
+                        if (a[i] <= pivot)
+                        {
+                            SwapCount++;
+                            Swap(ref a[i], ref a[pivotIndex]);
+                            pivotIndex++;
+                        }
                     }
+                    SwapCount++;
+                    Swap(ref a[pivotIndex], ref a[high]);
+                    return pivotIndex;
                 }
-                SwapCount++;
-                Swap(ref arr[pivotIndex], ref arr[high]);
-                return pivotIndex;
-            }
 
-            if (start < end)
-            {
-                int pivotIndex = Partition(array, start, end);
-                Quick(array, start, pivotIndex - 1);
-                Quick(array, pivotIndex + 1, end);
+                if (start < end)
+                {
+                    int pivotIndex = Partition(arr, start, end);
+                    arr = Sorting(arr, start, pivotIndex - 1);
+                    arr = Sorting(arr, pivotIndex + 1, end);
+                }
+                return arr;
             }
-            return array;
         }
-
+        
         public int[] Selection(int[] array)
         {
             for (int i = 0; i < array.Length - 1; i++)
