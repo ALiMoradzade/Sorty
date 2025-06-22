@@ -351,7 +351,7 @@ namespace Sorty
         public int[] Bead(int[] array)
         {
             // find max value
-            int max = array.Max(x => x);
+            int max = array.Max();
            
             int[,] grid = new int[array.Length, max];
             int[] levelCount = new int[max];
@@ -420,6 +420,39 @@ namespace Sorty
                         isSorted = false;
                     }
                 }
+            }
+            return array;
+        }
+
+        public int[] Radix(int[] array)
+        {
+            int[] Counting(int[] arr, int exp)
+            {
+                int[] output = new int[array.Length];
+                int[] count = new int[array.Length];
+
+                for (int i = 0; i < array.Length; i++)
+                {
+                    count[arr[i] / exp % 10]++;
+                }
+
+                for (int i = 1; i < 10; i++)
+                {
+                    count[i] += count[i - 1];
+                }
+
+                for (int i = array.Length - 1; i >= 0; i--)
+                {
+                    output[count[arr[i] / exp % 10] - 1] = arr[i];
+                    count[arr[i] / exp % 10]--;
+                }
+                return output;
+            }
+
+            int max = array.Max();
+            for (int exp = 1; max / exp > 0; exp *= 10)
+            {
+                array = Counting(array, exp);
             }
             return array;
         }
