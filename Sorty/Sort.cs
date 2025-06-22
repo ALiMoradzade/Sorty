@@ -347,6 +347,27 @@ namespace Sorty
             }
             return array;
         }
-        
+
+        private int[] Bogo(int[] array)
+        {
+            bool isArraySorted(int[] arr)
+            {
+                for (int i = 0; i < arr.Length - 1; i++)
+                {
+                    CompareCount++;
+                    if (arr[i] > arr[i + 1])
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            while (!isArraySorted(array))
+            {
+                array = Shuffle.Chaos(array);
+            }
+            return array;
+        }
     }
 }
