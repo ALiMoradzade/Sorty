@@ -247,7 +247,7 @@ namespace Sorty
             return array;
         }
 
-        int[] Cycle(int[] array)
+        public int[] Cycle(int[] array)
         {
             for (int cycleStart = 0; cycleStart < array.Length - 1; cycleStart++)
             {
@@ -307,5 +307,46 @@ namespace Sorty
             }
             return array;
         }
+
+        public int[] Cocktail(int[] array)
+        {
+            bool isSwapped = true;
+            int start = 0;
+            int end = array.Length;
+
+            while (isSwapped)
+            {
+                isSwapped = false;
+                for (int i = start; i < end - 1; i++)
+                {
+                    CompareCount++;
+                    if (array[i] > array[i + 1])
+                    {
+                        SwapCount++;
+                        Swap(ref array[i], ref array[i + 1]);
+                        isSwapped = true;
+                    }
+                }
+
+                if (!isSwapped) break;
+
+                isSwapped = false;
+                end--;
+
+                for (int i = end - 1; i >= start; i--)
+                {
+                    CompareCount++;
+                    if (array[i] > array[i + 1])
+                    {
+                        SwapCount++;
+                        Swap(ref array[i], ref array[i + 1]);
+                        isSwapped = true;
+                    }
+                }
+                start = start + 1;
+            }
+            return array;
+        }
+        
     }
 }
