@@ -13,17 +13,16 @@ namespace Sorty
             (a, b) = (b, a);
         }
 
-        public static int[] Chaos(int[] array)
+        public static void Chaos(int[] array)
         {
             Random r = new Random();
             for (int i = 0; i < array.Length; i++)
             {
                 Swap(ref array[i], ref array[r.Next(array.Length) % array.Length]);
             }
-            return array;
         }
 
-        public static int[] Riffle(int[] array)
+        public static void Riffle(int[] array)
         {
             int half = array.Length / 2;
             int remainingHalf = array.Length - half;
@@ -52,7 +51,7 @@ namespace Sorty
                 l.Add(n);
             }
 
-            return l.ToArray();
+            array = l.ToArray();
         }
     }
 }

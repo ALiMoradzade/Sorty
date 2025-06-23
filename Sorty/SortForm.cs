@@ -65,7 +65,7 @@ namespace Sorty
 
         private void buttonShuffle_Click(object sender, EventArgs e)
         {
-            array = Shuffle.Chaos(array);
+            Shuffle.Chaos(array);
         }
 
         private void buttonSort_Click(object sender, EventArgs e)
@@ -123,10 +123,21 @@ namespace Sorty
         private void buttonGenerateNumbers_Click(object sender, EventArgs e)
         {
             Random r = new Random();
+            // max elements in array is 2_621_439
+            // according to max array count (15_000)
+            // and
+            // because of bead which is 2d array (15_000 * 174)
+            // max number generated is 174
+            // I put 175 so random generator selects 0 to 174
+            int maxNumber = 175;
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = r.Next();
+                array[i] = r.Next(maxNumber);
             }
+        }
+
+
+        }
         }
     }
 }
