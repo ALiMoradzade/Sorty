@@ -66,6 +66,33 @@ namespace Sorty
                 labelIsArraySorted.Text += "false";
                 labelIsArraySorted.ForeColor = Color.Red;
             }
+
+            string[] sortNames = new string[13]
+            {
+                "Bead",
+                "Bubble",
+                "Cocktail",
+                "Cycle",
+                "Gnome",
+                "Heap",
+                "Insertion",
+                "Merge",
+                "OddEven",
+                "Quick",
+                "Radix",
+                "Selection",
+                "Shell",
+            };
+
+
+            foreach (string name in sortNames)
+            {
+                chart1.Series["Duration"].Points.AddXY(name, 0D);
+                chart1.Series["Compare Count"].Points.AddXY(name, 0);
+                chart1.Series["Swap Count"].Points.AddXY(name, 0);
+                chart1.Series["Set Count"].Points.AddXY(name, 0);
+            }
+           
         }
 
         private void SortForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -318,18 +345,17 @@ namespace Sorty
 
         private void LoadChart(List<SortStat> sortStats)
         {
-            chart1.Series["Duration"].Points.Clear();
-            chart1.Series["Compare Count"].Points.Clear();
-            chart1.Series["Swap Count"].Points.Clear();
-            chart1.Series["Set Count"].Points.Clear();
-
-            foreach (SortStat sortStat in sortStats)
+            sortStats = sortStats.OrderBy(x=>x.Name).ToList();
+            
+            for (int i = 0; i < sortStats.Count; i++)
             {
-                chart1.Series["Duration"].Points.AddXY(sortStat.Name, sortStat.Duration.TotalMilliseconds);
-                chart1.Series["Compare Count"].Points.AddXY(sortStat.Name, sortStat.CompareCount);
-                chart1.Series["Swap Count"].Points.AddXY(sortStat.Name, sortStat.SwapCount);
-                chart1.Series["Set Count"].Points.AddXY(sortStat.Name, sortStat.SetCount);
+                chart1.Series["Duration"].Points[i].SetValueY(sortStats[i].Duration.TotalMilliseconds);
+                chart1.Series["Compare Count"].Points[i].SetValueY(sortStats[i].CompareCount);
+                chart1.Series["Swap Count"].Points[i].SetValueY(sortStats[i].SwapCount);
+                chart1.Series["Set Count"].Points[i].SetValueY(sortStats[i].SetCount);
             }
+            chart1.ChartAreas["ChartAreaDuration"].RecalculateAxesScale();
+            chart1.ChartAreas["ChartAreaOperation"].RecalculateAxesScale();
         }
     }
 }
