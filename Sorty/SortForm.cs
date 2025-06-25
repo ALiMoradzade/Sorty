@@ -156,12 +156,6 @@ namespace Sorty
 
             labelIsArraySorted.Text = labelIsArraySortedText + "false";
             labelIsArraySorted.ForeColor = Color.Red;
-            
-            MessageBox.Show(
-                "Array elements have been shuffled chaotically",
-                "🔀 Shuffle Complete",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
         }
 
         private void SortInit(List<Task> sorts, List<SortStat> sortStats)
@@ -335,12 +329,6 @@ namespace Sorty
 
             labelIsArraySorted.Text = labelIsArraySortedText + "true";
             labelIsArraySorted.ForeColor = Color.Green;
-
-            MessageBox.Show(
-                "Array elements have been sorted into ascending order!",
-                "✅ Sort Complete",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
         }
 
         private void LoadChart(List<SortStat> sortStats)
