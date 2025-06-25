@@ -69,6 +69,11 @@ namespace Sorty
                 {
                     array = new int[(int)f.numericUpDown1.Value];
                     GenerateNumber();
+                    MessageBox.Show(
+                        $"An array of {f.numericUpDown1.Value} elements\nwith random numbers has been created",
+                        "✅ Creation Successful",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                 }
             }
         }
@@ -92,6 +97,11 @@ namespace Sorty
         private void buttonShuffle_Click(object sender, EventArgs e)
         {
             Shuffle.Chaos(array);
+            MessageBox.Show(
+                "Array elements have been shuffled chaotically",
+                "🔀 Shuffle Complete",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void SortInit(List<Task> sorts, List<SortStat> sortStats)
@@ -260,6 +270,11 @@ namespace Sorty
             SortInit(sorts, sortStats);
             await Task.WhenAll(sorts);
             LoadChart(sortStats);
+            MessageBox.Show(
+                "Array elements have been sorted into ascending order!",
+                "✅ Sort Complete",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void LoadChart(List<SortStat> sortStats)
@@ -277,7 +292,5 @@ namespace Sorty
                 chart1.Series["Set Count"].Points.AddXY(sortStat.Name, sortStat.SetCount);
             }
         }
-
-        
     }
 }
