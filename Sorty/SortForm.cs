@@ -1,6 +1,8 @@
+using Sorty.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -11,13 +13,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Xml.Serialization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace Sorty
 {
     public partial class SortForm : Form
     {
-        private string path = "array.txt";
+        private string pathArray = "array.txt";
+        private string pathArrayIsSorted = "isArraySort.txt";
+
+        private string labelArrayLengthTest = "Array length: ";
+        private string labelIsArraySortedText = "Is array sorted: ";
+
         private int[] array = new int[100];
 
         public SortForm()
@@ -27,11 +35,11 @@ namespace Sorty
 
         private void SortForm_Load(object sender, EventArgs e)
         {
-            if (File.Exists(path))
+            if (File.Exists(pathArray))
             {
                 try
                 {
-                    string s = File.ReadAllText(path);
+                    string s = File.ReadAllText(pathArray);
                     var arrayString = s.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
                     array = Array.ConvertAll(arrayString, Convert.ToInt32);
                 }
@@ -44,12 +52,27 @@ namespace Sorty
                 array = new int[1000];
                 GenerateNumber();
             }
+            labelArrayLength.Text = labelArrayLengthTest + array.Length;
+            
+            labelIsArraySorted.Text = labelIsArraySortedText;
+            if (File.Exists(pathArrayIsSorted))
+            {
+                string s = File.ReadAllText(pathArrayIsSorted);
+                labelIsArraySorted.Text += s;
+                labelIsArraySorted.ForeColor = Color.Green;
+            }
+            else
+            {
+                labelIsArraySorted.Text += "false";
+                labelIsArraySorted.ForeColor = Color.Red;
+            }
         }
 
         private void SortForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             string s = string.Join("\r\n", array);
-            File.WriteAllText(path, s);
+            File.WriteAllText(pathArray, s);
+            File.WriteAllText(pathArrayIsSorted, labelIsArraySorted.Text.Replace(labelIsArraySortedText, ""));
         }
 
         private void SortForm_SizeChanged(object sender, EventArgs e)
@@ -69,6 +92,12 @@ namespace Sorty
                 {
                     array = new int[(int)f.numericUpDown1.Value];
                     GenerateNumber();
+
+                    labelArrayLength.Text = labelArrayLengthTest + f.numericUpDown1.Value;
+
+                    labelIsArraySorted.Text = labelIsArraySortedText + "false";
+                    labelIsArraySorted.ForeColor = Color.Red;
+
                     MessageBox.Show(
                         $"An array of {f.numericUpDown1.Value} elements\nwith random numbers has been created",
                         "✅ Creation Successful",
@@ -97,6 +126,10 @@ namespace Sorty
         private void buttonShuffle_Click(object sender, EventArgs e)
         {
             Shuffle.Chaos(array);
+
+            labelIsArraySorted.Text = labelIsArraySortedText + "false";
+            labelIsArraySorted.ForeColor = Color.Red;
+            
             MessageBox.Show(
                 "Array elements have been shuffled chaotically",
                 "🔀 Shuffle Complete",
@@ -267,9 +300,15 @@ namespace Sorty
         {
             List<Task> sorts = new List<Task>();
             List<SortStat> sortStats = new List<SortStat>();
+            
             SortInit(sorts, sortStats);
             await Task.WhenAll(sorts);
+            
             LoadChart(sortStats);
+
+            labelIsArraySorted.Text = labelIsArraySortedText + "true";
+            labelIsArraySorted.ForeColor = Color.Green;
+
             MessageBox.Show(
                 "Array elements have been sorted into ascending order!",
                 "✅ Sort Complete",
