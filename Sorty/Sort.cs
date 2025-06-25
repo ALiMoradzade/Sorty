@@ -436,10 +436,11 @@ namespace Sorty
                 for (int i = 0; i < Array.Length; i++)
                 {
                     int putt = 0;
-                    for (int j = 0; j < max && grid[Array.Length - 1 - i, j] == 1; j++)
+                    for (int j = 0; j < max && grid[Array.Length - 1 - i, j] == 1; j++, CompareCount++)
                     {
                         putt++;
                     }
+                    SetCount++;
                     Array[i] = putt;
                 }
             });
@@ -503,6 +504,7 @@ namespace Sorty
 
                     for (int i = Array.Length - 1; i >= 0; i--)
                     {
+                        SetCount++;
                         output[count[arr[i] / exp % 10] - 1] = arr[i];
                         count[arr[i] / exp % 10]--;
                     }

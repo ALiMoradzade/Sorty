@@ -77,7 +77,7 @@ namespace Sorty
                 "Heap",
                 "Insertion",
                 "Merge",
-                "OddEven",
+                "Odd Even",
                 "Quick",
                 "Radix",
                 "Selection",
@@ -87,7 +87,7 @@ namespace Sorty
 
             foreach (string name in sortNames)
             {
-                chart1.Series["Duration"].Points.AddXY(name, 0D);
+                chart1.Series["Duration (ms)"].Points.AddXY(name, 0D);
                 chart1.Series["Compare Count"].Points.AddXY(name, 0);
                 chart1.Series["Swap Count"].Points.AddXY(name, 0);
                 chart1.Series["Set Count"].Points.AddXY(name, 0);
@@ -264,7 +264,7 @@ namespace Sorty
                 await sort.OddEven();
                 DateTime then = DateTime.Now;
 
-                SortStat stat = new SortStat("OddEven", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
+                SortStat stat = new SortStat("Odd Even", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
                 sortStats.Add(stat);
             }));
 
@@ -317,7 +317,7 @@ namespace Sorty
             }));
         }
 
-        private async void buttonSort_Click(object sender, EventArgs e)
+        private void buttonSort_Click(object sender, EventArgs e)
         {
             List<Task> sorts = new List<Task>();
             List<SortStat> sortStats = new List<SortStat>();
@@ -335,11 +335,11 @@ namespace Sorty
 
         private void LoadChart(List<SortStat> sortStats)
         {
-            sortStats = sortStats.OrderBy(x=>x.Name).ToList();
+            sortStats = sortStats.OrderBy(x => x.Name).ToList();
             
             for (int i = 0; i < sortStats.Count; i++)
             {
-                chart1.Series["Duration"].Points[i].SetValueY(sortStats[i].Duration.TotalMilliseconds);
+                chart1.Series["Duration (ms)"].Points[i].SetValueY(sortStats[i].Duration.TotalMilliseconds);
                 chart1.Series["Compare Count"].Points[i].SetValueY(sortStats[i].CompareCount);
                 chart1.Series["Swap Count"].Points[i].SetValueY(sortStats[i].SwapCount);
                 chart1.Series["Set Count"].Points[i].SetValueY(sortStats[i].SetCount);

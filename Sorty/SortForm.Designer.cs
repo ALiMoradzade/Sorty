@@ -92,7 +92,7 @@ namespace Sorty
             series1.IsValueShownAsLabel = true;
             series1.IsXValueIndexed = true;
             series1.Legend = "Legend1";
-            series1.Name = "Duration";
+            series1.Name = "Duration (ms)";
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
             series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             series2.ChartArea = "ChartAreaOperation";
