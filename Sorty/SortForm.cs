@@ -42,7 +42,7 @@ namespace Sorty
             else
             {
                 array = new int[1000];
-                buttonGenerateNumbers.PerformClick();
+                GenerateNumber();
             }
         }
 
@@ -50,6 +50,14 @@ namespace Sorty
         {
             string s = string.Join("\r\n", array);
             File.WriteAllText(path, s);
+        }
+
+        private void SortForm_SizeChanged(object sender, EventArgs e)
+        {
+            buttonArray.Location = new Point(buttonArray.Location.X, Size.Height - 74);
+            buttonShuffle.Location = new Point(buttonShuffle.Location.X, buttonArray.Location.Y);
+            buttonSort.Location = new Point(buttonSort.Location.X, buttonArray.Location.Y);
+            chart1.Size = new Size(chart1.Size.Width, buttonArray.Location.Y - 6);
         }
 
         private void buttonArray_Click(object sender, EventArgs e)
@@ -60,12 +68,12 @@ namespace Sorty
                 if (f.isOkPressed)
                 {
                     array = new int[(int)f.numericUpDown1.Value];
-                    buttonGenerateNumbers.PerformClick();
+                    GenerateNumber();
                 }
             }
         }
 
-        private void buttonGenerateNumbers_Click(object sender, EventArgs e)
+        private void GenerateNumber()
         {
             Random r = new Random();
             // max elements in array is 2_621_439
@@ -270,13 +278,6 @@ namespace Sorty
             }
         }
 
-        private void SortForm_SizeChanged(object sender, EventArgs e)
-        {
-            buttonArray.Location = new Point(buttonArray.Location.X, Size.Height - 81);
-            buttonGenerateNumbers.Location = new Point(buttonGenerateNumbers.Location.X, Size.Height - 88);
-            buttonShuffle.Location = new Point(buttonShuffle.Location.X, buttonArray.Location.Y);
-            buttonSort.Location = new Point(buttonSort.Location.X, buttonArray.Location.Y);
-            chart1.Size = new Size(chart1.Size.Width, buttonArray.Location.Y - 13);
-        }
+        
     }
 }
