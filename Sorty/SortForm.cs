@@ -6,9 +6,11 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace Sorty
@@ -63,63 +65,6 @@ namespace Sorty
             }
         }
 
-        private void buttonShuffle_Click(object sender, EventArgs e)
-        {
-            Shuffle.Chaos(array);
-        }
-
-        private void buttonSort_Click(object sender, EventArgs e)
-        {
-            Sort sort = new Sort();
-            DateTime now = DateTime.Now;
-            switch (comboBoxSort.Text)
-            {
-                case "Bead Sort":
-                    array = sort.Bead(array);
-                    break;
-                case "Bubble Sort":
-                    array = sort.Bubble(array);
-                    break;
-                case "Cocktail Sort":
-                    array = sort.Cocktail(array);
-                    break;
-                case "Cycle Sort":
-                    array = sort.Cycle(array);
-                    break;
-                case "Gnome Sort":
-                    array = sort.Gnome(array);
-                    break;
-                case "Heap Sort":
-                    array = sort.Heap(array);
-                    break;
-                case "Insertion Sort":
-                    array = sort.Insertion(array);
-                    break;
-                case "Merge Sort":
-                    array = sort.Merge(array);
-                    break;
-                case "Odd Even Sort":
-                    array = sort.OddEven(array);
-                    break;
-                case "Quick Sort":
-                    array = sort.Quick(array);
-                    break;
-                case "Radix Sort":
-                    array = sort.Radix(array);
-                    break;
-                case "Selection Sort":
-                    array = sort.Selection(array);
-                    break;
-                case "Shell Sort":
-                    array = sort.Shell(array);
-                    break;
-            }
-            DateTime then = DateTime.Now;
-
-            TimeSpan duration = then - now;
-            label1.Text = $"{duration.TotalMilliseconds:N2}ms";
-        }
-
         private void buttonGenerateNumbers_Click(object sender, EventArgs e)
         {
             Random r = new Random();
@@ -136,8 +81,193 @@ namespace Sorty
             }
         }
 
-
+        private void buttonShuffle_Click(object sender, EventArgs e)
+        {
+            Shuffle.Chaos(array);
         }
+
+        private void SortInit(List<Task> sorts, List<SortStat> sortStats)
+        {
+            sorts.Add(Task.Run(async () =>
+            {
+                Sort sort = new Sort(array);
+
+                DateTime now = DateTime.Now;
+                await sort.Bead();
+                DateTime then = DateTime.Now;
+
+                SortStat stat = new SortStat("Bead", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
+                sortStats.Add(stat);
+            }));
+
+            sorts.Add(Task.Run(async () =>
+            {
+                Sort sort = new Sort(array);
+
+                DateTime now = DateTime.Now;
+                await sort.Bubble();
+                DateTime then = DateTime.Now;
+
+                SortStat stat = new SortStat("Bubble", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
+                sortStats.Add(stat);
+            }));
+
+            sorts.Add(Task.Run(async () =>
+            {
+                Sort sort = new Sort(array);
+
+                DateTime now = DateTime.Now;
+                await sort.Cocktail();
+                DateTime then = DateTime.Now;
+
+                SortStat stat = new SortStat("Cocktail", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
+                sortStats.Add(stat);
+            }));
+
+            sorts.Add(Task.Run(async () =>
+            {
+                Sort sort = new Sort(array);
+
+                DateTime now = DateTime.Now;
+                await sort.Cycle();
+                DateTime then = DateTime.Now;
+
+                SortStat stat = new SortStat("Cycle", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
+                sortStats.Add(stat);
+            }));
+
+            sorts.Add(Task.Run(async () =>
+            {
+                Sort sort = new Sort(array);
+
+                DateTime now = DateTime.Now;
+                await sort.Gnome();
+                DateTime then = DateTime.Now;
+
+                SortStat stat = new SortStat("Gnome", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
+                sortStats.Add(stat);
+            }));
+
+            sorts.Add(Task.Run(async () =>
+            {
+                Sort sort = new Sort(array);
+
+                DateTime now = DateTime.Now;
+                await sort.Heap();
+                DateTime then = DateTime.Now;
+
+                SortStat stat = new SortStat("Heap", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
+                sortStats.Add(stat);
+            }));
+
+            sorts.Add(Task.Run(async () =>
+            {
+                Sort sort = new Sort(array);
+
+                DateTime now = DateTime.Now;
+                await sort.Insertion();
+                DateTime then = DateTime.Now;
+
+                SortStat stat = new SortStat("Insertion", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
+                sortStats.Add(stat);
+            }));
+
+            sorts.Add(Task.Run(async () =>
+            {
+                Sort sort = new Sort(array);
+
+                DateTime now = DateTime.Now;
+                await sort.Merge();
+                DateTime then = DateTime.Now;
+
+                SortStat stat = new SortStat("Merge", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
+                sortStats.Add(stat);
+            }));
+
+            sorts.Add(Task.Run(async () =>
+            {
+                Sort sort = new Sort(array);
+
+                DateTime now = DateTime.Now;
+                await sort.OddEven();
+                DateTime then = DateTime.Now;
+
+                SortStat stat = new SortStat("OddEven", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
+                sortStats.Add(stat);
+            }));
+
+            sorts.Add(Task.Run(async () =>
+            {
+                Sort sort = new Sort(array);
+
+                DateTime now = DateTime.Now;
+                await sort.Quick();
+                DateTime then = DateTime.Now;
+
+                SortStat stat = new SortStat("Quick", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
+                sortStats.Add(stat);
+            }));
+
+            sorts.Add(Task.Run(async () =>
+            {
+                Sort sort = new Sort(array);
+
+                DateTime now = DateTime.Now;
+                await sort.Radix();
+                DateTime then = DateTime.Now;
+
+                SortStat stat = new SortStat("Radix", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
+                sortStats.Add(stat);
+            }));
+
+            sorts.Add(Task.Run(async () =>
+            {
+                Sort sort = new Sort(array);
+
+                DateTime now = DateTime.Now;
+                await sort.Selection();
+                DateTime then = DateTime.Now;
+
+                SortStat stat = new SortStat("Selection", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
+                sortStats.Add(stat);
+            }));
+
+            sorts.Add(Task.Run(async () =>
+            {
+                Sort sort = new Sort(array);
+
+                DateTime now = DateTime.Now;
+                await sort.Shell();
+                DateTime then = DateTime.Now;
+
+                SortStat stat = new SortStat("Shell", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
+                sortStats.Add(stat);
+            }));
+        }
+
+        private async void buttonSort_Click(object sender, EventArgs e)
+        {
+            List<Task> sorts = new List<Task>();
+            List<SortStat> sortStats = new List<SortStat>();
+            SortInit(sorts, sortStats);
+            await Task.WhenAll(sorts);
+            LoadChart(sortStats);
+        }
+
+        private void LoadChart(List<SortStat> sortStats)
+        {
+            chart1.Series["Duration"].Points.Clear();
+            chart1.Series["Compare Count"].Points.Clear();
+            chart1.Series["Swap Count"].Points.Clear();
+            chart1.Series["Set Count"].Points.Clear();
+
+            foreach (SortStat sortStat in sortStats)
+            {
+                chart1.Series["Duration"].Points.AddXY(sortStat.Name, sortStat.Duration.TotalMilliseconds);
+                chart1.Series["Compare Count"].Points.AddXY(sortStat.Name, sortStat.CompareCount);
+                chart1.Series["Swap Count"].Points.AddXY(sortStat.Name, sortStat.SwapCount);
+                chart1.Series["Set Count"].Points.AddXY(sortStat.Name, sortStat.SetCount);
+            }
         }
     }
 }
