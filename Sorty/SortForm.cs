@@ -269,5 +269,14 @@ namespace Sorty
                 chart1.Series["Set Count"].Points.AddXY(sortStat.Name, sortStat.SetCount);
             }
         }
+
+        private void SortForm_SizeChanged(object sender, EventArgs e)
+        {
+            buttonArray.Location = new Point(buttonArray.Location.X, Size.Height - 81);
+            buttonGenerateNumbers.Location = new Point(buttonGenerateNumbers.Location.X, Size.Height - 88);
+            buttonShuffle.Location = new Point(buttonShuffle.Location.X, buttonArray.Location.Y);
+            buttonSort.Location = new Point(buttonSort.Location.X, buttonArray.Location.Y);
+            chart1.Size = new Size(chart1.Size.Width, buttonArray.Location.Y - 13);
+        }
     }
 }

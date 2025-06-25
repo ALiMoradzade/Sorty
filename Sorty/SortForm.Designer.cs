@@ -143,6 +143,7 @@ namespace Sorty
             this.Text = "Sorty";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SortForm_FormClosing);
             this.Load += new System.EventHandler(this.SortForm_Load);
+            this.SizeChanged += new System.EventHandler(this.SortForm_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
