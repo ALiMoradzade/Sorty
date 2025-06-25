@@ -323,8 +323,10 @@ namespace Sorty
             List<SortStat> sortStats = new List<SortStat>();
             
             SortInit(sorts, sortStats);
-            await Task.WhenAll(sorts);
-            
+            using (ProgressForm f = new ProgressForm(sorts))
+            {
+                f.ShowDialog();
+            }
             LoadChart(sortStats);
 
             labelIsArraySorted.Text = labelIsArraySortedText + "true";

@@ -54,6 +54,12 @@
     <Compile Include="ArrayCountForm.Designer.cs">
       <DependentUpon>ArrayCountForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressForm.Designer.cs">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Shuffle.cs" />
     <Compile Include="Sort.cs" />
     <Compile Include="SortForm.cs">
@@ -66,6 +72,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ArrayCountForm.resx">
       <DependentUpon>ArrayCountForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressForm.resx">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SortForm.resx">
       <DependentUpon>SortForm.cs</DependentUpon>
