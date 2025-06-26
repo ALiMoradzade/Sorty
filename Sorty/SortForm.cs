@@ -95,10 +95,13 @@ namespace Sorty
 
         private void SortForm_SizeChanged(object sender, EventArgs e)
         {
-            buttonArray.Location = new Point(buttonArray.Location.X, Size.Height - 74);
-            buttonShuffle.Location = new Point(buttonShuffle.Location.X, buttonArray.Location.Y);
-            buttonSort.Location = new Point(buttonSort.Location.X, buttonArray.Location.Y);
-            chart1.Size = new Size(chart1.Size.Width, buttonArray.Location.Y - 6);
+            if (WindowState != FormWindowState.Minimized)
+            {
+                buttonArray.Location = new Point(buttonArray.Location.X, Size.Height - 74);
+                buttonShuffle.Location = new Point(buttonShuffle.Location.X, buttonArray.Location.Y);
+                buttonSort.Location = new Point(buttonSort.Location.X, buttonArray.Location.Y);
+                chart1.Size = new Size(chart1.Size.Width, buttonArray.Location.Y - 6);
+            }
         }
 
         private void buttonArray_Click(object sender, EventArgs e)
