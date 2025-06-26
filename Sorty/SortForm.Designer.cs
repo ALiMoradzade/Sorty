@@ -36,6 +36,7 @@ namespace Sorty
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SortForm));
             this.buttonSort = new System.Windows.Forms.Button();
             this.buttonShuffle = new System.Windows.Forms.Button();
             this.buttonArray = new System.Windows.Forms.Button();
@@ -130,9 +131,10 @@ namespace Sorty
             // 
             this.labelArrayLength.AutoSize = true;
             this.labelArrayLength.BackColor = System.Drawing.Color.White;
+            this.labelArrayLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelArrayLength.Location = new System.Drawing.Point(12, 9);
             this.labelArrayLength.Name = "labelArrayLength";
-            this.labelArrayLength.Size = new System.Drawing.Size(75, 13);
+            this.labelArrayLength.Size = new System.Drawing.Size(101, 18);
             this.labelArrayLength.TabIndex = 9;
             this.labelArrayLength.Text = "Array length: 1";
             // 
@@ -140,10 +142,11 @@ namespace Sorty
             // 
             this.labelIsArraySorted.AutoSize = true;
             this.labelIsArraySorted.BackColor = System.Drawing.Color.White;
+            this.labelIsArraySorted.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelIsArraySorted.ForeColor = System.Drawing.Color.Black;
-            this.labelIsArraySorted.Location = new System.Drawing.Point(12, 22);
+            this.labelIsArraySorted.Location = new System.Drawing.Point(12, 27);
             this.labelIsArraySorted.Name = "labelIsArraySorted";
-            this.labelIsArraySorted.Size = new System.Drawing.Size(101, 13);
+            this.labelIsArraySorted.Size = new System.Drawing.Size(141, 18);
             this.labelIsArraySorted.TabIndex = 10;
             this.labelIsArraySorted.Text = "Is array sorted: false";
             // 
@@ -158,8 +161,8 @@ namespace Sorty
             this.Controls.Add(this.buttonShuffle);
             this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.chart1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SortForm";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sorty";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SortForm_FormClosing);
