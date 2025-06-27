@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:Setup1"
+"ProjectName" = "8:Sorty Setup"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -15,20 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_1FD092AD7CCE4031923E6BFD6D67A185"
+        "MsmKey" = "8:_42562C59816E429AB4D172096ED3BD57"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_898E9137D74A472687011E16981BD0C2"
+        "MsmKey" = "8:_6335DA8D1AA84BF3BDA94061931F42E6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1FD092AD7CCE4031923E6BFD6D67A185"
+        "OwnerKey" = "8:_6335DA8D1AA84BF3BDA94061931F42E6"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -118,7 +118,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.7.2"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.8"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=863262"
                 }
@@ -126,10 +126,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_898E9137D74A472687011E16981BD0C2"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_42562C59816E429AB4D172096ED3BD57"
             {
-            "SourcePath" = "8:..\\Sorty\\icon.ico"
-            "TargetName" = "8:icon.ico"
+            "SourcePath" = "8:..\\Sorty\\icon128.ico"
+            "TargetName" = "8:icon128.ico"
             "Tag" = "8:"
             "Folder" = "8:_4DD6FAF128D64319BF09E5C4C4E16865"
             "Condition" = "8:"
@@ -157,7 +157,7 @@
             "Name" = "8:#1919"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
-            "Transitive" = "11:FALSE"
+            "Transitive" = "11:TRUE"
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
@@ -165,11 +165,11 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_4DD6FAF128D64319BF09E5C4C4E16865"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFilesFolder]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
-            "Transitive" = "11:FALSE"
+            "Transitive" = "11:TRUE"
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
@@ -180,7 +180,7 @@
             "Name" = "8:#1916"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
-            "Transitive" = "11:FALSE"
+            "Transitive" = "11:TRUE"
             "Property" = "8:DesktopFolder"
                 "Folders"
                 {
@@ -203,7 +203,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Sorty"
         "ProductCode" = "8:{1829C4AF-2B93-4DC0-A8FD-2CF68303A60C}"
-        "PackageCode" = "8:{403354D2-432B-4333-AFA0-B197AA6BD521}"
+        "PackageCode" = "8:{8638C425-2E0F-4BBD-9D19-79D317D58E31}"
         "UpgradeCode" = "8:{A1BCEABD-08A9-4343-AA82-6D35EF186EBD}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -323,32 +323,32 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B8A51865FD004468A2F50DC0A9973B46"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D3E368DB88E44E189CB4907652952514"
             {
             "Name" = "8:Sorty"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_1FD092AD7CCE4031923E6BFD6D67A185"
-            "Folder" = "8:_0C139E564CB547F481F5BB3F5EBDA690"
-            "WorkingFolder" = "8:_4DD6FAF128D64319BF09E5C4C4E16865"
-            "Icon" = "8:_898E9137D74A472687011E16981BD0C2"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D01E7A9BC5F44EFC978C63D93CC78F51"
-            {
-            "Name" = "8:Sorty"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_1FD092AD7CCE4031923E6BFD6D67A185"
+            "Transitive" = "11:TRUE"
+            "Target" = "8:_6335DA8D1AA84BF3BDA94061931F42E6"
             "Folder" = "8:_F9609AB96FE04E7AB3B9E30151D28E2D"
             "WorkingFolder" = "8:_4DD6FAF128D64319BF09E5C4C4E16865"
-            "Icon" = "8:_898E9137D74A472687011E16981BD0C2"
+            "Icon" = "8:_42562C59816E429AB4D172096ED3BD57"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_DDE6FC0994154C059E6E24F778E9C9B3"
+            {
+            "Name" = "8:Sorty"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:TRUE"
+            "Target" = "8:_6335DA8D1AA84BF3BDA94061931F42E6"
+            "Folder" = "8:_0C139E564CB547F481F5BB3F5EBDA690"
+            "WorkingFolder" = "8:_4DD6FAF128D64319BF09E5C4C4E16865"
+            "Icon" = "8:_42562C59816E429AB4D172096ED3BD57"
             "Feature" = "8:"
             }
         }
@@ -750,7 +750,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1FD092AD7CCE4031923E6BFD6D67A185"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_6335DA8D1AA84BF3BDA94061931F42E6"
             {
             "SourcePath" = "8:..\\Sorty\\obj\\Release\\Sorty.exe"
             "TargetName" = "8:"
