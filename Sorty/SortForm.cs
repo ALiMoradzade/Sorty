@@ -11,11 +11,11 @@ namespace Sorty
 {
     public partial class SortForm : Form
     {
-        private string pathArray = "array.txt";
-        private string pathArrayIsSorted = "isArraySort.txt";
+        private readonly string pathArray = "array.txt";
+        private readonly string pathArrayIsSorted = "isSort.txt";
 
-        private string labelArrayLengthTest = "Array length: ";
-        private string labelIsArraySortedText = "Is array sorted: ";
+        private readonly string labelArrayLengthTest = "Array Length: ";
+        private readonly string labelIsArraySortedText = "Is Sorted: ";
 
         private int[] array = new int[100];
 
@@ -37,6 +37,21 @@ namespace Sorty
                 catch (Exception)
                 {
                 }
+                finally
+                {
+                    labelIsArraySorted.Text = labelIsArraySortedText;
+                    if (File.Exists(pathArrayIsSorted))
+                    {
+                        bool isSorted = bool.Parse(File.ReadAllText(pathArrayIsSorted));
+                        labelIsArraySorted.Text += isSorted;
+                        labelIsArraySorted.ForeColor = isSorted ? Color.Green : Color.Red;
+                    }
+                    else
+                    {
+                        labelIsArraySorted.Text += "False";
+                        labelIsArraySorted.ForeColor = Color.Red;
+                    }
+                }
             }
             else
             {
@@ -44,19 +59,6 @@ namespace Sorty
                 GenerateNumber();
             }
             labelArrayLength.Text = labelArrayLengthTest + array.Length;
-            
-            labelIsArraySorted.Text = labelIsArraySortedText;
-            if (File.Exists(pathArrayIsSorted))
-            {
-                string s = File.ReadAllText(pathArrayIsSorted);
-                labelIsArraySorted.Text += s;
-                labelIsArraySorted.ForeColor = Color.Green;
-            }
-            else
-            {
-                labelIsArraySorted.Text += "false";
-                labelIsArraySorted.ForeColor = Color.Red;
-            }
 
             string[] sortNames = new string[13]
             {
@@ -74,8 +76,6 @@ namespace Sorty
                 "Selection",
                 "Shell",
             };
-
-
             foreach (string name in sortNames)
             {
                 chart1.Series["Duration (ms)"].Points.AddXY(name, 0D);
@@ -83,7 +83,6 @@ namespace Sorty
                 chart1.Series["Swap Count"].Points.AddXY(name, 0);
                 chart1.Series["Set Count"].Points.AddXY(name, 0);
             }
-           
         }
 
         private void SortForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -111,13 +110,9 @@ namespace Sorty
                 f.ShowDialog();
                 if (f.isOkPressed)
                 {
+                    labelArrayLength.Text = labelArrayLengthTest + f.numericUpDown1.Value;
                     array = new int[(int)f.numericUpDown1.Value];
                     GenerateNumber();
-
-                    labelArrayLength.Text = labelArrayLengthTest + f.numericUpDown1.Value;
-
-                    labelIsArraySorted.Text = labelIsArraySortedText + "false";
-                    labelIsArraySorted.ForeColor = Color.Red;
 
                     MessageBox.Show(
                         $"An array of {f.numericUpDown1.Value} elements\nwith random numbers has been created",
@@ -142,168 +137,171 @@ namespace Sorty
             {
                 array[i] = r.Next(maxNumber);
             }
+
+            labelIsArraySorted.Text = labelIsArraySortedText + "False";
+            labelIsArraySorted.ForeColor = Color.Red;
         }
 
         private void buttonShuffle_Click(object sender, EventArgs e)
         {
             Shuffle.Chaos(array);
 
-            labelIsArraySorted.Text = labelIsArraySortedText + "false";
+            labelIsArraySorted.Text = labelIsArraySortedText + "False";
             labelIsArraySorted.ForeColor = Color.Red;
         }
 
         private void SortInit(List<Task> sorts, List<SortStat> sortStats)
         {
-            sorts.Add(Task.Run(async () =>
+            sorts.Add(Task.Run(() =>
             {
                 Sort sort = new Sort(array);
 
                 DateTime now = DateTime.Now;
-                await sort.Bead();
+                sort.Bead();
                 DateTime then = DateTime.Now;
 
                 SortStat stat = new SortStat("Bead", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
                 sortStats.Add(stat);
             }));
 
-            sorts.Add(Task.Run(async () =>
+            sorts.Add(Task.Run(() =>
             {
                 Sort sort = new Sort(array);
 
                 DateTime now = DateTime.Now;
-                await sort.Bubble();
+                sort.Bubble();
                 DateTime then = DateTime.Now;
 
                 SortStat stat = new SortStat("Bubble", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
                 sortStats.Add(stat);
             }));
 
-            sorts.Add(Task.Run(async () =>
+            sorts.Add(Task.Run(() =>
             {
                 Sort sort = new Sort(array);
 
                 DateTime now = DateTime.Now;
-                await sort.Cocktail();
+                sort.Cocktail();
                 DateTime then = DateTime.Now;
 
                 SortStat stat = new SortStat("Cocktail", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
                 sortStats.Add(stat);
             }));
 
-            sorts.Add(Task.Run(async () =>
+            sorts.Add(Task.Run(() =>
             {
                 Sort sort = new Sort(array);
 
                 DateTime now = DateTime.Now;
-                await sort.Cycle();
+                sort.Cycle();
                 DateTime then = DateTime.Now;
 
                 SortStat stat = new SortStat("Cycle", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
                 sortStats.Add(stat);
             }));
 
-            sorts.Add(Task.Run(async () =>
+            sorts.Add(Task.Run(() =>
             {
                 Sort sort = new Sort(array);
 
                 DateTime now = DateTime.Now;
-                await sort.Gnome();
+                sort.Gnome();
                 DateTime then = DateTime.Now;
 
                 SortStat stat = new SortStat("Gnome", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
                 sortStats.Add(stat);
             }));
 
-            sorts.Add(Task.Run(async () =>
+            sorts.Add(Task.Run(() =>
             {
                 Sort sort = new Sort(array);
 
                 DateTime now = DateTime.Now;
-                await sort.Heap();
+                sort.Heap();
                 DateTime then = DateTime.Now;
 
                 SortStat stat = new SortStat("Heap", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
                 sortStats.Add(stat);
             }));
 
-            sorts.Add(Task.Run(async () =>
+            sorts.Add(Task.Run(() =>
             {
                 Sort sort = new Sort(array);
 
                 DateTime now = DateTime.Now;
-                await sort.Insertion();
+                sort.Insertion();
                 DateTime then = DateTime.Now;
 
                 SortStat stat = new SortStat("Insertion", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
                 sortStats.Add(stat);
             }));
 
-            sorts.Add(Task.Run(async () =>
+            sorts.Add(Task.Run(() =>
             {
                 Sort sort = new Sort(array);
 
                 DateTime now = DateTime.Now;
-                await sort.Merge();
+                sort.Merge();
                 DateTime then = DateTime.Now;
 
                 SortStat stat = new SortStat("Merge", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
                 sortStats.Add(stat);
             }));
 
-            sorts.Add(Task.Run(async () =>
+            sorts.Add(Task.Run(() =>
             {
                 Sort sort = new Sort(array);
 
                 DateTime now = DateTime.Now;
-                await sort.OddEven();
+                sort.OddEven();
                 DateTime then = DateTime.Now;
 
                 SortStat stat = new SortStat("Odd Even", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
                 sortStats.Add(stat);
             }));
 
-            sorts.Add(Task.Run(async () =>
+            sorts.Add(Task.Run(() =>
             {
                 Sort sort = new Sort(array);
 
                 DateTime now = DateTime.Now;
-                await sort.Quick();
+                sort.Quick();
                 DateTime then = DateTime.Now;
 
                 SortStat stat = new SortStat("Quick", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
                 sortStats.Add(stat);
             }));
 
-            sorts.Add(Task.Run(async () =>
+            sorts.Add(Task.Run(() =>
             {
                 Sort sort = new Sort(array);
 
                 DateTime now = DateTime.Now;
-                await sort.Radix();
+                sort.Radix();
                 DateTime then = DateTime.Now;
 
                 SortStat stat = new SortStat("Radix", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
                 sortStats.Add(stat);
             }));
 
-            sorts.Add(Task.Run(async () =>
+            sorts.Add(Task.Run(() =>
             {
                 Sort sort = new Sort(array);
 
                 DateTime now = DateTime.Now;
-                await sort.Selection();
+                sort.Selection();
                 DateTime then = DateTime.Now;
 
                 SortStat stat = new SortStat("Selection", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
                 sortStats.Add(stat);
             }));
 
-            sorts.Add(Task.Run(async () =>
+            sorts.Add(Task.Run(() =>
             {
                 Sort sort = new Sort(array);
 
                 DateTime now = DateTime.Now;
-                await sort.Shell();
+                sort.Shell();
                 DateTime then = DateTime.Now;
 
                 SortStat stat = new SortStat("Shell", then - now, sort.SetCount, sort.SwapCount, sort.CompareCount);
@@ -323,7 +321,7 @@ namespace Sorty
             }
             LoadChart(sortStats);
 
-            labelIsArraySorted.Text = labelIsArraySortedText + "true";
+            labelIsArraySorted.Text = labelIsArraySortedText + "True";
             labelIsArraySorted.ForeColor = Color.Green;
         }
 

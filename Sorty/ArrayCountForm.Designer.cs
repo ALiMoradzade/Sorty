@@ -57,8 +57,13 @@ namespace Sorty
             0,
             0,
             0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(53, 20);
             this.numericUpDown1.TabIndex = 5;
             this.numericUpDown1.Value = new decimal(new int[] {
             10000,

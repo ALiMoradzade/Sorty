@@ -134,9 +134,9 @@ namespace Sorty
             this.labelArrayLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelArrayLength.Location = new System.Drawing.Point(12, 9);
             this.labelArrayLength.Name = "labelArrayLength";
-            this.labelArrayLength.Size = new System.Drawing.Size(101, 18);
+            this.labelArrayLength.Size = new System.Drawing.Size(106, 18);
             this.labelArrayLength.TabIndex = 9;
-            this.labelArrayLength.Text = "Array length: 1";
+            this.labelArrayLength.Text = "Array Length: 1";
             // 
             // labelIsArraySorted
             // 
@@ -146,9 +146,9 @@ namespace Sorty
             this.labelIsArraySorted.ForeColor = System.Drawing.Color.Black;
             this.labelIsArraySorted.Location = new System.Drawing.Point(12, 27);
             this.labelIsArraySorted.Name = "labelIsArraySorted";
-            this.labelIsArraySorted.Size = new System.Drawing.Size(141, 18);
+            this.labelIsArraySorted.Size = new System.Drawing.Size(106, 18);
             this.labelIsArraySorted.TabIndex = 10;
-            this.labelIsArraySorted.Text = "Is array sorted: false";
+            this.labelIsArraySorted.Text = "Is Sorted: false";
             // 
             // SortForm
             // 

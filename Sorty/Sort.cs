@@ -40,62 +40,56 @@ namespace Sorty
             Array = array.ToArray();
         }
 
-        public Task Bubble()
+        public void Bubble()
         {
-            return Task.Run(() =>
+            for (int i = 0; i < Array.Length - 1; i++)
             {
-                for (int i = 0; i < Array.Length - 1; i++)
+                for (int j = 0; j < Array.Length - 1 - i; j++)
                 {
-                    for (int j = 0; j < Array.Length - 1 - i; j++)
+                    CompareCount++;
+                    if (Array[j] > Array[j + 1])
                     {
-                        CompareCount++;
-                        if (Array[j] > Array[j + 1])
-                        {
-                            SwapCount++;
-                            Swap(ref Array[j], ref Array[j + 1]);
-                        }
+                        SwapCount++;
+                        Swap(ref Array[j], ref Array[j + 1]);
                     }
                 }
-            });
+            }
         }
 
-        public Task Insertion()
+        public void Insertion()
         {
-            return Task.Run(() =>
+            for (int i = 0; i < Array.Length; ++i)
             {
-                for (int i = 0; i < Array.Length; ++i)
+                int temp = Array[i];
+                int j = i;
+                // was while loop
+                for (; j > 0 && temp < Array[j - 1]; j--, CompareCount++)
                 {
-                    int temp = Array[i];
-                    int j = i;
-                    // was while loop
-                    for (; j > 0 && temp < Array[j - 1]; j--, CompareCount++)
-                    {
-                        SetCount++;
-                        Array[j] = Array[j - 1];
-                    }
                     SetCount++;
-                    Array[j] = temp;
+                    Array[j] = Array[j - 1];
                 }
-            });
+                SetCount++;
+                Array[j] = temp;
+            }
         }
 
-        public Task Merge()
+        public void Merge()
         {
-            return Task.Run(() => Merge(Array));
+            Merge(Array);
         }
-        private void Merge(int[] array)
+        private void Merge(int[] arr)
         {
-            if (array.Length != 1)
+            if (arr.Length != 1)
             {
                 // Divide
-                int halfLength = array.Length / 2;
-                int remainingHalfLength = array.Length - halfLength;
+                int halfLength = arr.Length / 2;
+                int remainingHalfLength = arr.Length - halfLength;
 
                 int[] left = new int[halfLength];
-                System.Array.Copy(array, left, halfLength);
+                System.Array.Copy(arr, left, halfLength);
 
                 int[] right = new int[remainingHalfLength];
-                System.Array.Copy(array, halfLength, right, 0, remainingHalfLength);
+                System.Array.Copy(arr, halfLength, right, 0, remainingHalfLength);
 
                 Merge(left);
                 Merge(right);
@@ -108,29 +102,29 @@ namespace Sorty
                     if (left[leftIndex] <= right[rightIndex])
                     {
                         SetCount++;
-                        array[arrayIndex] = left[leftIndex];
+                        arr[arrayIndex] = left[leftIndex];
                         leftIndex++;
                     }
                     else
                     {
                         SetCount++;
-                        array[arrayIndex] = right[rightIndex];
+                        arr[arrayIndex] = right[rightIndex];
                         rightIndex++;
                     }
                     arrayIndex++;
                 }
-                while (arrayIndex < array.Length)
+                while (arrayIndex < arr.Length)
                 {
                     if (leftIndex < left.Length)
                     {
                         SetCount++;
-                        array[arrayIndex] = left[leftIndex];
+                        arr[arrayIndex] = left[leftIndex];
                         leftIndex++;
                     }
                     else if (rightIndex < right.Length)
                     {
                         SetCount++;
-                        array[arrayIndex] = right[rightIndex];
+                        arr[arrayIndex] = right[rightIndex];
                         rightIndex++;
                     }
                     arrayIndex++;
@@ -138,165 +132,175 @@ namespace Sorty
             }
         }
 
-        public Task Quick()
+        public void Quick()
         {
-            return Task.Run(() =>
+            quick(Array, 0, Array.Length - 1);
+        }
+        private void quick(int[] arr, int start, int end)
+        {
+            int Partition(int[] a, int low, int high)
             {
-                Sorting(Array, 0, Array.Length - 1);
-
-                void Sorting(int[] arr, int start, int end)
+                int pivotIndex;
+                int pivot = a[high];
+                for (int i = pivotIndex = low; i < high; i++)
                 {
-                    int Partition(int[] a, int low, int high)
+                    CompareCount++;
+                    if (a[i] <= pivot)
                     {
-                        int pivotIndex;
-                        int pivot = a[high];
-                        for (int i = pivotIndex = low; i < high; i++)
-                        {
-                            CompareCount++;
-                            if (a[i] <= pivot)
-                            {
-                                SwapCount++;
-                                Swap(ref a[i], ref a[pivotIndex]);
-                                pivotIndex++;
-                            }
-                        }
                         SwapCount++;
-                        Swap(ref a[pivotIndex], ref a[high]);
-                        return pivotIndex;
+                        Swap(ref a[i], ref a[pivotIndex]);
+                        pivotIndex++;
                     }
-
-                    if (start < end)
-                    {
-                        int pivotIndex = Partition(arr, start, end);
-                        Sorting(arr, start, pivotIndex - 1);
-                        Sorting(arr, pivotIndex + 1, end);
-                    }
-                    
                 }
-            });
+                SwapCount++;
+                Swap(ref a[pivotIndex], ref a[high]);
+                return pivotIndex;
+            }
+
+            if (start < end)
+            {
+                int pivotIndex = Partition(arr, start, end);
+                quick(arr, start, pivotIndex - 1);
+                quick(arr, pivotIndex + 1, end);
+            }
         }
 
-        public Task Selection()
+        public void Selection()
         {
-            return Task.Run(() =>
+            for (int i = 0; i < Array.Length - 1; i++)
             {
-                for (int i = 0; i < Array.Length - 1; i++)
+                int minIndex = i;
+                for (int j = i + 1; j < Array.Length; j++)
                 {
-                    int minIndex = i;
-                    for (int j = i + 1; j < Array.Length; j++)
+                    CompareCount++;
+                    if (Array[j] < Array[minIndex])
                     {
-                        CompareCount++;
-                        if (Array[j] < Array[minIndex])
-                        {
-                            minIndex = j;
-                        }
+                        minIndex = j;
                     }
-                    SwapCount++;
-                    Swap(ref Array[i], ref Array[minIndex]);
                 }
-            });
+                SwapCount++;
+                Swap(ref Array[i], ref Array[minIndex]);
+            }
         }
 
-        public Task Shell()
+        public void Shell()
         {
-            return Task.Run(() =>
+            for (int gap = Array.Length / 2; gap > 0; gap /= 2)
             {
-                for (int gap = Array.Length / 2; gap > 0; gap /= 2)
+                for (int i = gap; i < Array.Length; i++)
                 {
-                    for (int i = gap; i < Array.Length; i++)
+                    int temp = Array[i];
+                    int j;
+                    for (j = i; j >= gap && Array[j - gap] > temp; j -= gap, CompareCount++)
                     {
-                        int temp = Array[i];
-                        int j;
-                        for (j = i; j >= gap && Array[j - gap] > temp; j -= gap, CompareCount++)
-                        {
-                            SetCount++;
-                            Array[j] = Array[j - gap];
-                        }
                         SetCount++;
-                        Array[j] = temp;
+                        Array[j] = Array[j - gap];
                     }
+                    SetCount++;
+                    Array[j] = temp;
                 }
-            });
+            }
         }
 
-        public Task Heap()
+        public void Heap()
         {
-            return Task.Run(() =>
+            void Heapify(int[] arr, int heapSize, int rootIndex)
             {
-                void Heapify(int[] arr, int heapSize, int rootIndex)
+                int largest = rootIndex;
+                int left = 2 * rootIndex + 1;
+                int right = 2 * rootIndex + 2;
+
+                CompareCount++;
+                if (left < heapSize && arr[left] > arr[largest])
                 {
-                    int largest = rootIndex;
-                    int left = 2 * rootIndex + 1;
-                    int right = 2 * rootIndex + 2;
-
-                    CompareCount++;
-                    if (left < heapSize && arr[left] > arr[largest])
-                    {
-                        largest = left;
-                    }
-                    CompareCount++;
-                    if (right < heapSize && arr[right] > arr[largest])
-                    {
-                        largest = right;
-                    }
-
-                    if (largest != rootIndex)
-                    {
-                        SwapCount++;
-                        Swap(ref arr[rootIndex], ref arr[largest]);
-                        Heapify(arr, heapSize, largest);
-                    }
+                    largest = left;
+                }
+                CompareCount++;
+                if (right < heapSize && arr[right] > arr[largest])
+                {
+                    largest = right;
                 }
 
-                for (int i = Array.Length / 2; i >= 0; i--)
-                {
-                    Heapify(Array, Array.Length, i);
-                }
-
-                for (int i = Array.Length - 1; i >= 0; i--)
+                if (largest != rootIndex)
                 {
                     SwapCount++;
-                    Swap(ref Array[0], ref Array[i]);
-                    Heapify(Array, i, 0);
+                    Swap(ref arr[rootIndex], ref arr[largest]);
+                    Heapify(arr, heapSize, largest);
                 }
-            });
+            }
+
+            for (int i = Array.Length / 2; i >= 0; i--)
+            {
+                Heapify(Array, Array.Length, i);
+            }
+
+            for (int i = Array.Length - 1; i >= 0; i--)
+            {
+                SwapCount++;
+                Swap(ref Array[0], ref Array[i]);
+                Heapify(Array, i, 0);
+            }
         }
 
-        public Task Gnome()
+        public void Gnome()
         {
-            return Task.Run(() =>
+            int i = 0;
+            while (i < Array.Length)
             {
-                int i = 0;
-                while (i < Array.Length)
+                if (i == 0)
                 {
-                    if (i == 0)
-                    {
-                        i++;
-                    }
+                    i++;
+                }
+                CompareCount++;
+                if (Array[i] >= Array[i - 1])
+                {
+                    i++;
+                }
+                else
+                {
+                    SwapCount++;
+                    Swap(ref Array[i], ref Array[i - 1]);
+                    i--;
+                }
+            }
+        }
+
+        public void Cycle()
+        {
+            for (int cycleStart = 0; cycleStart < Array.Length - 1; cycleStart++)
+            {
+                int temp = Array[cycleStart];
+                int pos = cycleStart;
+
+                for (int i = cycleStart + 1; i < Array.Length; i++)
+                {
                     CompareCount++;
-                    if (Array[i] >= Array[i - 1])
+                    if (Array[i] < temp)
                     {
-                        i++;
-                    }
-                    else
-                    {
-                        SwapCount++;
-                        Swap(ref Array[i], ref Array[i - 1]);
-                        i--;
+                        pos++;
                     }
                 }
-            });
-        }
 
-        public Task Cycle()
-        {
-            return Task.Run(() =>
-            {
-                for (int cycleStart = 0; cycleStart < Array.Length - 1; cycleStart++)
+                if (pos == cycleStart)
                 {
-                    int temp = Array[cycleStart];
-                    int pos = cycleStart;
+                    continue;
+                }
 
+                // was while loop
+                for (; temp == Array[pos]; pos++, CompareCount++)
+                {
+                }
+
+
+                if (pos != cycleStart)
+                {
+                    SwapCount++;
+                    Swap(ref temp, ref Array[pos]);
+                }
+
+                while (pos != cycleStart)
+                {
+                    pos = cycleStart;
                     for (int i = cycleStart + 1; i < Array.Length; i++)
                     {
                         CompareCount++;
@@ -306,212 +310,170 @@ namespace Sorty
                         }
                     }
 
-                    if (pos == cycleStart)
-                    {
-                        continue;
-                    }
-
                     // was while loop
                     for (; temp == Array[pos]; pos++, CompareCount++)
                     {
                     }
 
-
-                    if (pos != cycleStart)
+                    CompareCount++;
+                    if (temp != Array[pos])
                     {
                         SwapCount++;
                         Swap(ref temp, ref Array[pos]);
                     }
-
-                    while (pos != cycleStart)
-                    {
-                        pos = cycleStart;
-                        for (int i = cycleStart + 1; i < Array.Length; i++)
-                        {
-                            CompareCount++;
-                            if (Array[i] < temp)
-                            {
-                                pos++;
-                            }
-                        }
-
-                        // was while loop
-                        for (; temp == Array[pos]; pos++, CompareCount++)
-                        {
-                        }
-
-                        CompareCount++;
-                        if (temp != Array[pos])
-                        {
-                            SwapCount++;
-                            Swap(ref temp, ref Array[pos]);
-                        }
-                    }
                 }
-            });
+            }
         }
 
-        public Task Cocktail()
+        public void Cocktail()
         {
-            return Task.Run(() =>
+            bool isSwapped = true;
+            int start = 0;
+            int end = Array.Length;
+
+            while (isSwapped)
             {
-                bool isSwapped = true;
-                int start = 0;
-                int end = Array.Length;
-
-                while (isSwapped)
+                isSwapped = false;
+                for (int i = start; i < end - 1; i++)
                 {
-                    isSwapped = false;
-                    for (int i = start; i < end - 1; i++)
+                    CompareCount++;
+                    if (Array[i] > Array[i + 1])
                     {
-                        CompareCount++;
-                        if (Array[i] > Array[i + 1])
-                        {
-                            SwapCount++;
-                            Swap(ref Array[i], ref Array[i + 1]);
-                            isSwapped = true;
-                        }
+                        SwapCount++;
+                        Swap(ref Array[i], ref Array[i + 1]);
+                        isSwapped = true;
                     }
-
-                    if (!isSwapped)
-                    {
-                        break;
-                    }
-
-                    isSwapped = false;
-                    end--;
-
-                    for (int i = end - 1; i >= start; i--)
-                    {
-                        CompareCount++;
-                        if (Array[i] > Array[i + 1])
-                        {
-                            SwapCount++;
-                            Swap(ref Array[i], ref Array[i + 1]);
-                            isSwapped = true;
-                        }
-                    }
-                    start = start + 1;
                 }
-            });
+
+                if (!isSwapped)
+                {
+                    break;
+                }
+
+                isSwapped = false;
+                end--;
+
+                for (int i = end - 1; i >= start; i--)
+                {
+                    CompareCount++;
+                    if (Array[i] > Array[i + 1])
+                    {
+                        SwapCount++;
+                        Swap(ref Array[i], ref Array[i + 1]);
+                        isSwapped = true;
+                    }
+                }
+                start = start + 1;
+            }
         }
 
-        public Task Bead()
+        public void Bead()
         {
-            return Task.Run(() =>
+            // find max value
+            int max = Array.Max();
+
+            int[,] grid = new int[Array.Length, max];
+            int[] levelCount = new int[max];
+
+            // Step 1: "place" beads
+            for (int i = 0; i < max; i++)
             {
-                // find max value
-                int max = Array.Max();
-
-                int[,] grid = new int[Array.Length, max];
-                int[] levelCount = new int[max];
-
-                // Step 1: "place" beads
-                for (int i = 0; i < max; i++)
+                levelCount[i] = 0;
+                for (int j = 0; j < Array.Length; j++)
                 {
-                    levelCount[i] = 0;
-                    for (int j = 0; j < Array.Length; j++)
+                    grid[j, i] = 0; // Not Marked
+                }
+            }
+
+            // Step 2: Let beads "fall" by counting per column
+            for (int i = 0; i < Array.Length; i++)
+            {
+                int num = Array[i];
+                for (int j = 0; num > 0; j++, num--)
+                {
+                    grid[levelCount[j]++, j] = 1; // Marked
+                }
+            }
+
+            // Step 3: Read out sorted values
+            for (int i = 0; i < Array.Length; i++)
+            {
+                int putt = 0;
+                for (int j = 0; j < max && grid[Array.Length - 1 - i, j] == 1; j++, CompareCount++)
+                {
+                    putt++;
+                }
+                SetCount++;
+                Array[i] = putt;
+            }
+        }
+
+        public void OddEven()
+        {
+            bool isSorted = false;
+
+            while (!isSorted)
+            {
+                isSorted = true;
+
+                // odd
+                for (int i = 1; i <= Array.Length - 2; i += 2)
+                {
+                    CompareCount++;
+                    if (Array[i] > Array[i + 1])
                     {
-                        grid[j, i] = 0; // Not Marked
+                        SwapCount++;
+                        Swap(ref Array[i], ref Array[i + 1]);
+                        isSorted = false;
                     }
                 }
 
-                // Step 2: Let beads "fall" by counting per column
-                for (int i = 0; i < Array.Length; i++)
+                // even
+                for (int i = 0; i <= Array.Length - 2; i += 2)
                 {
-                    int num = Array[i];
-                    for (int j = 0; num > 0; j++, num--)
+                    CompareCount++;
+                    if (Array[i] > Array[i + 1])
                     {
-                        grid[levelCount[j]++, j] = 1; // Marked
+                        SwapCount++;
+                        Swap(ref Array[i], ref Array[i + 1]);
+                        isSorted = false;
                     }
                 }
+            }
+        }
 
-                // Step 3: Read out sorted values
+        public void Radix()
+        {
+            void Counting(int[] arr, int exp)
+            {
+                int[] output = new int[Array.Length];
+                int[] count = new int[Array.Length];
+
                 for (int i = 0; i < Array.Length; i++)
                 {
-                    int putt = 0;
-                    for (int j = 0; j < max && grid[Array.Length - 1 - i, j] == 1; j++, CompareCount++)
-                    {
-                        putt++;
-                    }
+                    count[arr[i] / exp % 10]++;
+                }
+
+                for (int i = 1; i < 10; i++)
+                {
+                    count[i] += count[i - 1];
+                }
+
+                for (int i = Array.Length - 1; i >= 0; i--)
+                {
                     SetCount++;
-                    Array[i] = putt;
+                    output[count[arr[i] / exp % 10] - 1] = arr[i];
+                    count[arr[i] / exp % 10]--;
                 }
-            });
-        }
 
-        public Task OddEven()
-        {
-            return Task.Run(() =>
+                arr = output;
+            }
+
+            int max = Array.Max();
+            for (int exp = 1; max / exp > 0; exp *= 10)
             {
-                bool isSorted = false;
-
-                while (!isSorted)
-                {
-                    isSorted = true;
-
-                    // odd
-                    for (int i = 1; i <= Array.Length - 2; i += 2)
-                    {
-                        CompareCount++;
-                        if (Array[i] > Array[i + 1])
-                        {
-                            SwapCount++;
-                            Swap(ref Array[i], ref Array[i + 1]);
-                            isSorted = false;
-                        }
-                    }
-
-                    // even
-                    for (int i = 0; i <= Array.Length - 2; i += 2)
-                    {
-                        CompareCount++;
-                        if (Array[i] > Array[i + 1])
-                        {
-                            SwapCount++;
-                            Swap(ref Array[i], ref Array[i + 1]);
-                            isSorted = false;
-                        }
-                    }
-                }
-            });
-        }
-
-        public Task Radix()
-        {
-            return Task.Run(() =>
-            {
-                void Counting(int[] arr, int exp)
-                {
-                    int[] output = new int[Array.Length];
-                    int[] count = new int[Array.Length];
-
-                    for (int i = 0; i < Array.Length; i++)
-                    {
-                        count[arr[i] / exp % 10]++;
-                    }
-
-                    for (int i = 1; i < 10; i++)
-                    {
-                        count[i] += count[i - 1];
-                    }
-
-                    for (int i = Array.Length - 1; i >= 0; i--)
-                    {
-                        SetCount++;
-                        output[count[arr[i] / exp % 10] - 1] = arr[i];
-                        count[arr[i] / exp % 10]--;
-                    }
-                    
-                    arr = output;
-                }
-
-                int max = Array.Max();
-                for (int exp = 1; max / exp > 0; exp *= 10)
-                {
-                    Counting(Array, exp);
-                }
-            });
+                Counting(Array, exp);
+            }
         }
 
         private void Bogo()
